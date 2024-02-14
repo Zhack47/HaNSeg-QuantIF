@@ -101,7 +101,7 @@ class MyHanseg2023Algorithm(Hanseg2023Algorithm):
         del ct_image
         # Shamelessly copied from nnUNet/nnunetv2/preprocessing/resampling/default_resampling.py
         new_shape = np.array([int(round(i / j * k)) for i, j, k in zip(fin_spacing, spacing[::-1], fin_size)])
-        if new_shape.prod()<  1e7:
+        if new_shape.prod()<  1e8:
             print(f"Image is not too large ({new_shape.prod()}), using the folds (0,1,2,3,4) with mirror")
             predictor = nnUNetPredictor(tile_step_size=0.4, use_mirroring=True, perform_everything_on_gpu=True,
                                         verbose=True, verbose_preprocessing=True,
