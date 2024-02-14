@@ -24,7 +24,7 @@ COPY --chown=user:user custom_algorithm.py /opt/app/
 COPY --chown=user:user process.py /opt/app/
 
 # This is the checkpoint file, uncomment the line below and modify /local/path/to/the/checkpoint to your needs
-COPY --chown=user:user weights5_all.zip /opt/algorithm/checkpoint/nnUNet/
+COPY --chown=user:user weights5_all5k.zip /opt/algorithm/checkpoint/nnUNet/
 RUN python -c "import zipfile; import os; zipfile.ZipFile('/opt/algorithm/checkpoint/nnUNet/weights5_all5k.zip').extractall('/opt/algorithm/checkpoint/nnUNet/')"
 # COPY --chown=user:user weights /opt/algorithm/checkpoint
 ENV nnUNet_results="/opt/algorithm/checkpoint/"
