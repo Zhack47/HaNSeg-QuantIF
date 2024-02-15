@@ -65,7 +65,7 @@ class MyHanseg2023Algorithm(Hanseg2023Algorithm):
     def predict(self, *, image_ct: ants.ANTsImage, image_mrt1: ants.ANTsImage) -> sitk.Image:
         print("Computing registration", flush=True)
         time0reg= time.time_ns()
-        mytx = ants.registration(fixed=image_ct, moving=image_mrt1, type_of_transform='Rigid', aff_iterations=(50, 50, 50, 50))
+        mytx = ants.registration(fixed=image_ct, moving=image_mrt1, type_of_transform='Affine', aff_iterations=(50, 50, 50, 50))
         print(f"Time reg: {(time.time_ns()-time0reg)/1000000000}")
         warped_MR = ants.apply_transforms(fixed=image_ct, moving=image_mrt1,
                                           transformlist=mytx['fwdtransforms'])
