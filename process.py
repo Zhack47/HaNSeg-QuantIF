@@ -68,7 +68,7 @@ class MyHanseg2023Algorithm(Hanseg2023Algorithm):
         mytx = ants.registration(fixed=image_ct, moving=image_mrt1, type_of_transform='Affine')  #, aff_iterations=(150, 150, 150, 150))
         print(f"Time reg: {(time.time_ns()-time0reg)/1000000000}")
         warped_MR = ants.apply_transforms(fixed=image_ct, moving=image_mrt1,
-                                          transformlist=mytx['fwdtransforms'])
+                                          transformlist=mytx['fwdtransforms'], defaultvalue=image_mrt1.min())
         trained_model_path = join("/opt", "algorithm", "checkpoint", "nnUNet", "Dataset504_HANSEGREG", "STUNetTrainer_base_ft__nnUNetPlans__3d_fullres")
 
         spacing = tuple(map(float,json.load(open(join(trained_model_path, "plans.json"), "r"))["configurations"]["3d_fullres"]["spacing"]))

@@ -25,7 +25,7 @@ docker run --rm \
         --pids-limit="256" \
         --gpus="all" \
         -v $SCRIPTPATH/test/:/input/ \
-        -v $OUTDIR:/output/ \
+        -v $SCRIPTPATH/output/:/output \
         hanseg2023algorithm_zhack
 echo "docker done"
 
